@@ -23,7 +23,6 @@ pipeline {
 
     agent {
         docker {
-            sh 'sudo usermod -a -G docker $USER'
             image 'android-agent'
             //todo share args
 //            args '-v /android-sdk:/opt/android-sdk'
