@@ -23,7 +23,7 @@ pipeline {
 
     agent {
         docker {
-            image 'android-agent'
+            image 'thyrlian/android-sdk-vnc'
             //todo share args
 //            args '-v /android-sdk:/opt/android-sdk'
 //            args '-v /android-sdk:/opt/android-sdk -v /android-cache:/root/.android -v /gradle-cache:/root/.gradle'
