@@ -58,20 +58,20 @@ pipeline {
             }
         }
 
-        stage("Lint check"){
-            steps {
-                script {
-                    sh './gradlew lintRelease --stacktrace --no-daemon'
-                }
-            }
-        }
+//        stage("Lint check"){
+//            steps {
+//                script {
+//                    sh './gradlew lintRelease --stacktrace --no-daemon'
+//                }
+//            }
+//        }
 
         //todo tests are commented to speed up build while we don't have any tests. this should be uncommented.
-        stage("Junit tests"){
-            steps {
-                sh './gradlew test'
-            }
-        }
+//        stage("Junit tests"){
+//            steps {
+//                sh './gradlew test'
+//            }
+//        }
 
         stage('build') {
             steps {

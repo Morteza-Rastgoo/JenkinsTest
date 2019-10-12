@@ -18,6 +18,11 @@ ext.versionMajor = 0
 ext.versionMinor = 1
 ```
 ```
+defaultConfig{
+        testBuildType System.getProperty('testBuildType', 'debug')
+        }
+```
+```
 versionName computeVersionName()
 versionCode computeVersionCode()
 ```
