@@ -66,6 +66,13 @@ pipeline {
             }
         }
 
+        //todo tests are commented to speed up build while we don't have any tests. this should be uncommented.
+        stage("Junit tests"){
+            steps {
+                sh './gradlew test'
+            }
+        }
+
         stage('build') {
             steps {
                 //todo make choosing right version of build-tools dynamic
@@ -79,11 +86,11 @@ pipeline {
                 sh '$ANDROID_HOME/build-tools/28.0.3/zipalign -f -v 4 app/build/outputs/apk/androidTest/release/app-release-androidTest.apk app/build/outputs/apk/androidTest/release/app-release-androidTest-aligned.apk'
 
                 //sign both apk files
-                withCredentials([file(credentialsId: 'achillesAndroidKeyStore', variable: 'KS_FILE'),
-                                 string(credentialsId: 'achilessAndroidKeyStorePassword', variable: 'PASSWORD')]) {
+                withCredentials([file(credentialsId: 'unitedbitAndroidKeyStore', variable: 'KS_FILE'),
+                                 string(credentialsId: 'unitedbitAndroidKeyStorePassword', variable: 'PASSWORD')]) {
 
-                    sh '$ANDROID_HOME/build-tools/28.0.3/apksigner sign --ks $KS_FILE --ks-pass pass:$PASSWORD --key-pass pass:$PASSWORD --ks-key-alias achilles-android app/build/outputs/apk/release/app-release-unsigned-aligned.apk'
-                    sh '$ANDROID_HOME/build-tools/28.0.3/apksigner sign --ks $KS_FILE --ks-pass pass:$PASSWORD --key-pass pass:$PASSWORD --ks-key-alias achilles-android app/build/outputs/apk/androidTest/release/app-release-androidTest-aligned.apk'
+                    sh '$ANDROID_HOME/build-tools/28.0.3/apksigner sign --ks $KS_FILE --ks-pass pass:$PASSWORD --key-pass pass:$PASSWORD --ks-key-alias unitedbit app/build/outputs/apk/release/app-release-unsigned-aligned.apk'
+                    sh '$ANDROID_HOME/build-tools/28.0.3/apksigner sign --ks $KS_FILE --ks-pass pass:$PASSWORD --key-pass pass:$PASSWORD --ks-key-alias unitedbit app/build/outputs/apk/androidTest/release/app-release-androidTest-aligned.apk'
 
                     sh 'mv app/build/outputs/apk/release/app-release-unsigned-aligned.apk app/build/outputs/apk/release/'+ getReleaseName()
 
@@ -94,13 +101,8 @@ pipeline {
             }
         }
 
-//todo tests are commented to speed up build while we don't have any tests. this should be uncommented.
-//        stage("Junit tests"){
-//            steps {
-//                sh './gradlew test'
-//            }
-//        }
-//
+
+
 //        stage("Instrumental Tests"){
 //            steps {
 //                withCredentials([file(credentialsId: 'firebaseJsonFile', variable: 'FIREBASE_JSON_FILE'),
