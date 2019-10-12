@@ -16,7 +16,7 @@ library identifier: 'jenkins-shared@master', retriever: modernSCM(
 
 pipeline {
     environment {
-        appName = "cheragh"
+        appName = "Jenkins Test"
         versionName = ''
         commitId = ''
     }
@@ -107,7 +107,7 @@ pipeline {
                                  string(credentialsId: 'firebaseEmail', variable: 'FIREBASE_EMAIL')]) {
 
                     //todo project id as credentials
-                    sh 'gcloud auth activate-service-account $FIREBASE_EMAIL --key-file=$FIREBASE_JSON_FILE --project=jenkinstest-5a4e5'
+                    sh 'gcloud auth activate-service-account $FIREBASE_EMAIL --key-file=$FIREBASE_JSON_FILE'
                 }
 
                 sh "gcloud firebase test android run --app app/build/outputs/apk/release/${getReleaseName()} --test app/build/outputs/apk/androidTest/release/app-release-androidTest-aligned.apk"
