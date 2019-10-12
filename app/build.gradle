@@ -16,6 +16,7 @@ android {
         versionName computeVersionName()
         versionCode computeVersionCode()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testBuildType System.getProperty('testBuildType', 'debug')
     }
     buildTypes {
         release {
