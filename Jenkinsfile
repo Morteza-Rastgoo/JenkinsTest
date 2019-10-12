@@ -16,7 +16,7 @@ library identifier: 'jenkins-shared@master', retriever: modernSCM(
 
 pipeline {
     environment {
-        appName = "Jenkins Test"
+        appName = "JenkinsTest"
         versionName = ''
         commitId = ''
     }

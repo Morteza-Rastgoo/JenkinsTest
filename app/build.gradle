@@ -12,7 +12,7 @@ android {
     defaultConfig {
         applicationId "com.example.jenkinstest"
         minSdkVersion 15
-        targetSdkVersion 29
+        targetSdkVersion 28
         versionName computeVersionName()
         versionCode computeVersionCode()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
