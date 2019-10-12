@@ -25,7 +25,7 @@ pipeline {
         docker {
             image 'android-agent'
             //todo share args
-            args '-v /android-sdk:/opt/android-sdk'
+//            args '-v /android-sdk:/opt/android-sdk'
 //            args '-v /android-sdk:/opt/android-sdk -v /android-cache:/root/.android -v /gradle-cache:/root/.gradle'
         }
     }
