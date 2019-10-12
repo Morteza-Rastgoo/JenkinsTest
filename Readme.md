@@ -43,3 +43,10 @@ task printVersion {
     }
 }
 ```
+
+
+Build android-agent 
+
+`git pull https://github.com/alzahm/android-agent`
+
+`docker build android-agent .`
