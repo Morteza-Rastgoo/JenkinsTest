@@ -77,8 +77,6 @@ pipeline {
             steps {
                 //todo make choosing right version of build-tools dynamic
 
-                sh 'yes | sdkmanager --licenses'
-
                 //building the apk file.
                 sh './gradlew assembleRelease --stacktrace --no-daemon'
                 sh '$ANDROID_HOME/build-tools/28.0.3/zipalign -f -v 4 app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/app-release-unsigned-aligned.apk'
