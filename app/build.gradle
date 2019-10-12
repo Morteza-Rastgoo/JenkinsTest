@@ -4,14 +4,17 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+ext.versionMajor = 0
+ext.versionMinor = 1
+
 android {
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.example.jenkinstest"
         minSdkVersion 15
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionName computeVersionName()
+        versionCode computeVersionCode()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -19,6 +22,20 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+
+    //Making sure the building a release version without signing it is possible. Latter on we will sign the unsigned apk
+    //with gradle commands, this make it compatible with CI server as well.
+    signingConfigs {
+        release {
+
+        }
+    }
+
+
+    lintOptions {
+        warningsAsErrors false //todo make true, set false only to speed up the demo version
+        lintConfig file("../lint.xml")
     }
 }
 
@@ -33,4 +50,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
+
+def computeVersionName() {
+    // Basic <major>.<minor> version name
+    return String.format('%d.%d', versionMajor, versionMinor)
+}
+
+// Will use Jenkins build number as well
+def computeVersionCode() {
+    return (versionMajor * 100000) + (versionMinor * 10000) + Integer.valueOf(System.env.BUILD_NUMBER ?: 0)
+}
+
+task printVersion {
+    doLast {
+        print android.defaultConfig.versionName + '.' + android.defaultConfig.versionCode
+    }
 }

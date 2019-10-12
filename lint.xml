@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <!-- ignore list, the app will not be checked against this issues -->
+    <issue id="GoogleAppIndexingWarning" severity="ignore" />
+    <issue id="ContentDescription" severity="ignore" />
+    <issue id="KeyboardInaccessibleWidget" severity="ignore" />
+    <issue id="LabelFor" severity="ignore" />
+    <issue id="GetContentDescriptionOverride" severity="ignore" />
+    <issue id="ImpliedQuantity" severity="ignore" />
+    <issue id="PluralsCandidate" severity="ignore" />
+    <issue id="UnusedQuantity" severity="ignore" />
+    <issue id="FindViewByIdCast" severity="ignore" />
+    <issue id="BottomAppBar" severity="ignore" />
+    <issue id="InstantApps" severity="ignore" />
+    <issue id="MissingLeanbackSupport" severity="ignore" />
+    <issue id="Registered" severity="fatal" />
+
+
+    <!-- Disable the given check in this project -->
+    <issue id="AllowBackup" severity="informational" />
+
+
+</lint>
