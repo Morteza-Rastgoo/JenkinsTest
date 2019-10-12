@@ -101,18 +101,18 @@ pipeline {
             }
         }
 
-        stage("Instrumental Tests"){
-            steps {
-                withCredentials([file(credentialsId: 'firebaseJsonFile', variable: 'FIREBASE_JSON_FILE'),
-                                 string(credentialsId: 'firebaseEmail', variable: 'FIREBASE_EMAIL')]) {
-
-                    //todo project id as credentials
-                    sh 'gcloud auth activate-service-account --key-file=$FIREBASE_JSON_FILE'
-                }
-
-                sh "gcloud firebase test android run --app app/build/outputs/apk/release/${getReleaseName()} --test app/build/outputs/apk/androidTest/release/app-release-androidTest-aligned.apk --project=jenkinstest-5a4e5"
-            }
-        }
+//        stage("Instrumental Tests"){
+//            steps {
+//                withCredentials([file(credentialsId: 'firebaseJsonFile', variable: 'FIREBASE_JSON_FILE'),
+//                                 string(credentialsId: 'firebaseEmail', variable: 'FIREBASE_EMAIL')]) {
+//
+//                    //todo project id as credentials
+//                    sh 'gcloud auth activate-service-account --key-file=$FIREBASE_JSON_FILE'
+//                }
+//
+//                sh "gcloud firebase test android run --app app/build/outputs/apk/release/${getReleaseName()} --test app/build/outputs/apk/androidTest/release/app-release-androidTest-aligned.apk --project=jenkinstest-5a4e5"
+//            }
+//        }
 
         stage("Upload"){
             steps {
