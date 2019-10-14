@@ -77,7 +77,7 @@ pipeline {
             steps {
                 //todo make choosing right version of build-tools dynamic
 
-                sh 'yes | sdkmanager --licenses'
+                sh 'yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses'
 
                 //building the apk file.
                 sh './gradlew assembleRelease --stacktrace --no-daemon'
