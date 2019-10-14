@@ -154,7 +154,7 @@ def upload(){
     def fileLocation = "${getServerIP()}/${getReleaseName()}"
 
     sendTelegram("Build successful for ${appName} Android ${currentBuild.displayName}\n" +
-            "$fileLocation \nPlease do not send this APK to anyone outside Mobodid without consulting dev team.")
+            "$fileLocation \nPlease do not send this APK to anyone outside team without consulting dev team.")
 
     sh 'echo $fileLocation'
 }
